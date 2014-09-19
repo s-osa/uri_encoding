@@ -1,3 +1,4 @@
+require "uri_encoding/encoder"
 require "uri_encoding/version"
 
 module UriEncoding
