@@ -17,6 +17,12 @@ module UriEncoding
   module_function
 
   def encode(str, exceptions=DefaultExceptions)
-    UriEncoding::Encoder.new(exceptions).encode(str)
+    encoder = UriEncoding::Encoder.new(exceptions)
+    encoder.encode(str)
+  end
+
+  def decode(str)
+    decoder = UriEncoding::Decoder.new
+    decoder.decode(str)
   end
 end

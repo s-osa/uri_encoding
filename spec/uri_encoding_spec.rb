@@ -55,4 +55,24 @@ describe UriEncoding do
       end
     end
   end
+
+  describe ".decode" do
+    context "default exceptions" do
+      default_mappings.each do |source, encoded|
+        describe "#{encoded}" do
+          subject{ described_class.decode(encoded) }
+          it{ is_expected.to eq(source) }
+        end
+      end
+    end
+
+    context "no exceptions" do
+      everything_escaped_mappings.each do |source, encoded|
+        describe "#{encoded}" do
+          subject{ described_class.decode(encoded) }
+          it{ is_expected.to eq(source) }
+        end
+      end
+    end
+  end
 end
