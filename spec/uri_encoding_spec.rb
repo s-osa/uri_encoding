@@ -12,7 +12,7 @@ describe UriEncoding do
   end
 
   describe "::Reserved characters" do
-    subject{ UriEncoding::ReservedCharacters }
+    subject{ described_class::ReservedCharacters }
     it{ is_expected.to eq(reserved_characters)}
   end
 
@@ -32,7 +32,27 @@ describe UriEncoding do
   end
 
   describe "::Unreserved characters" do
-    subject{ UriEncoding::UnreservedCharacters }
+    subject{ described_class::UnreservedCharacters }
     it{ is_expected.to eq(unreserved_characters)}
+  end
+
+  describe ".encode" do
+    context "default exceptions" do
+      default_mappings.each do |source, result|
+        describe "#{source}" do
+          subject{ described_class.encode(source) }
+          it{ is_expected.to eq(result) }
+        end
+      end
+    end
+
+    context "no exceptions" do
+      everything_escaped_mappings.each do |source, result|
+        describe "#{source}" do
+          subject{ described_class.encode(source, []) }
+          it{ is_expected.to eq(result) }
+        end
+      end
+    end
   end
 end

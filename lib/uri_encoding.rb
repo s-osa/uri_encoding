@@ -11,4 +11,12 @@ module UriEncoding
 
   ReservedCharacters = GenDelims + SubDelims
   UnreservedCharacters = Alphabets + Digits + UnreservedSigns
+
+  DefaultExceptions = ReservedCharacters + UnreservedCharacters
+
+  module_function
+
+  def encode(str, exceptions=DefaultExceptions)
+    UriEncoding::Encoder.new(exceptions).encode(str)
+  end
 end

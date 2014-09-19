@@ -1,7 +1,7 @@
 module UriEncoding
   class Encoder
     def initialize(excepted_chars=nil)
-      @excepted_chars = excepted_chars || ReservedCharacters + UnreservedCharacters
+      @excepted_chars = excepted_chars || DefaultExceptions
     end
 
     def encode(str)
