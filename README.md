@@ -34,8 +34,8 @@ UriEncoding.decode("Aa1!?_%25") #=> "Aa1!?_%"
 `UriEncoding.encode` receives exceptions for encoding.
 
 ```ruby
-UriEncoding.encode(Aa1!?_%, []) #=> "%41%61%31%21%3F%5F%25"
-UriEncoding.encode(Aa1!?_%, UriEncoding::UnreservedCharacters) #=> "Aa1%21%3F_%25"
+UriEncoding.encode("Aa1!?_%", []) #=> "%41%61%31%21%3F%5F%25"
+UriEncoding.encode("Aa1!?_%", UriEncoding::UnreservedCharacters) #=> "Aa1%21%3F_%25"
 ```
 
 ## Contributing
