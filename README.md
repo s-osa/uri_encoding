@@ -1,5 +1,8 @@
 # UriEncoding
 
+[![Build Status](https://travis-ci.org/s-osa/uri_encoding.svg?branch=master)](https://travis-ci.org/s-osa/uri_encoding)
+[![Coverage Status](https://coveralls.io/repos/s-osa/uri_encoding/badge.png)](https://coveralls.io/r/s-osa/uri_encoding)
+
 TODO: Write a gem description
 
 ## Installation
