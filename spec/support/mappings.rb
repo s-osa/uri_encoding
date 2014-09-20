@@ -1,3 +1,5 @@
+# coding: utf-8
+
 def default_mappings
   {
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ" => "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -42,6 +44,9 @@ def default_mappings
     "{" => "%7B",
     "|" => "%7C",
     "}" => "%7D",
+
+    # multibyte character
+    "あいう" => "%E3%81%82%E3%81%84%E3%81%86",
   }
 end
 
@@ -89,5 +94,9 @@ def everything_escaped_mappings
     "{" => "%7B",
     "|" => "%7C",
     "}" => "%7D",
+
+    # multibyte character
+    "あいう" => "%E3%81%82%E3%81%84%E3%81%86",
+    "あいう".encode(Encoding::Windows_31J) => "%82%A0%82%A2%82%A4".encode(Encoding::Windows_31J),
   }
 end

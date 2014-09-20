@@ -2,10 +2,10 @@ module UriEncoding
   class Decoder
     EncodedCharRegexp = /^%([0-9A-Fa-f]{2})$/
 
-    def decode(str)
-      encoded_chars = split_encoded_string(str)
-      decoded_chars = encoded_chars.map{|c| decode_char(c) }
-      decoded_chars.join
+    def decode(str, encoding=nil)
+      single_byte_expressions = split_encoded_string(str)
+      bytes_string = single_byte_expressions.map{|e| convert_to_byte(e) }.join
+      bytes_string.force_encoding(encoding || str.encoding)
     end
 
     private
@@ -20,8 +20,8 @@ module UriEncoding
       arr
     end
 
-    def decode_char(char)
-      char =~ EncodedCharRegexp ?  Integer("0x#{$1}").chr : char
+    def convert_to_byte(exp)
+      exp =~ EncodedCharRegexp ?  Integer("0x#{$1}").chr : exp
     end
   end
 end
