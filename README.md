@@ -38,6 +38,13 @@ UriEncoding.encode("Aa1!?_%", []) #=> "%41%61%31%21%3F%5F%25"
 UriEncoding.encode("Aa1!?_%", UriEncoding::UnreservedCharacters) #=> "Aa1%21%3F_%25"
 ```
 
+`UriEncoding.decode` receives decoded string encoding.
+
+```ruby
+string = UriEncoding.decode("%82%A0%82%A2%82%A4", Encoding::Windows_31J) #=> "あいう"
+string.encoding #=> #<Encoding:Windows-31J>
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/uri_encoding/fork )
