@@ -30,13 +30,11 @@ describe UriEncoding::Decoder do
     end
 
     context "with encoding argument" do
-      encoding = Encoding::Windows_31J
-      source   = "あいう".encode(encoding)
-      encoded  =  "%82%A0%82%A2%82%A4"
-
-      describe "#{encoded} as #{encoding}" do
-        subject{ decoder.decode(encoded, encoding) }
-        it{ is_expected.to eq(source) }
+      multibyte_mappings.each do |mapping|
+        describe "#{mapping[:encoded]} as #{mapping[:encoding]}" do
+          subject{ decoder.decode(mapping[:encoded], mapping[:encoding]) }
+          it{ is_expected.to eq(mapping[:source]) }
+        end
       end
     end
   end

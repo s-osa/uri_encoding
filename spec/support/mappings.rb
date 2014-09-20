@@ -100,3 +100,13 @@ def everything_escaped_mappings
     "あいう".encode(Encoding::Windows_31J) => "%82%A0%82%A2%82%A4".encode(Encoding::Windows_31J),
   }
 end
+
+def multibyte_mappings
+  [
+    {
+      source: "あいう".encode(Encoding::Windows_31J),
+      encoded: "%82%A0%82%A2%82%A4",
+      encoding: Encoding::Windows_31J
+    },
+  ]
+end
